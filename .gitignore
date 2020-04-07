@@ -1,4 +1,4 @@
-.idea
-.gitignore
-.DS_Store
-.ipynb_checkpoints
+    .gitignore
+    .idea/*
+    .idea
+    .DS_Store
