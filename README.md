@@ -8,7 +8,7 @@ This repository is a supplement to the 'Machine Learning For Everyone' book. It 
     - [`algorithms_and_how_they_work.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%202.%20Machine%20Learning%20Fundamentals/algorithms_and_how_they_work.ipynb) : *cost functions, gradient descent*
     - [`errors.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%202.%20Machine%20Learning%20Fundamentals/errors.ipynb) : *bias and variance graphs, training and test errors graph, learning and validation curves*
 3. [**Chapter 3. Data Preprocessing**](https://github.com/5x12/ml4everyone/tree/master/Chapter%203.%20Data%20Preprocessing)
-    - [`data_cleaning.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%203.%20Data%20Preprocessing/data_cleaning.ipynb) : *incorrect data, incomplete data, irrelevant data, duplicated data, improperly formatted data*
+    - [`data_cleaning.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%203.%20Data%20Preprocessing/data_cleaning.ipynb) : *fixing incorrect data, incomplete data, irrelevant data, duplicated data, improperly formatted data*
     - [`feature_engineering.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%203.%20Data%20Preprocessing/feature_engineering.ipynb) : *feature transformation, feature generation*
     - [`data_normalization_standardization.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%203.%20Data%20Preprocessing/data_normalization_standardization.ipynb) : *normalization, standardization*
     - [`data_augmentation.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%203.%20Data%20Preprocessing/data_augmentation.ipynb) : *synthetic minority oversampling technique (SMOTE)*
