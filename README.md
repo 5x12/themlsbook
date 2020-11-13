@@ -16,3 +16,6 @@ This repository is a supplement to the 'Machine Learning For Everyone' book. It 
     - `embedded_methods.ipynb` : *decision tree classifier, lasso regression*
     - `filter_methods.ipynb` : *chi-square, fisher score, relief, correlation-based feature selection*
     - `wrapper_methods.ipynb` : *step forward feature selection, step backward feature selection, recursive feature elimination*
+
+
+The book is at www.ml4everyone.com
