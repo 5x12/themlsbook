@@ -2,7 +2,7 @@
 
 This repository is a supplement to the 'Machine Learning For Everyone' book. It contains the implementation of algorithms, statistical methods and techniques in Python.
 
-1. [Chapter 1. Basic Principles](https://github.com/5x12/ml4everyone/tree/master/Chapter%201.%20Basic%20Principles)
+1. [**Chapter 1. Basic Principles**](https://github.com/5x12/ml4everyone/tree/master/Chapter%201.%20Basic%20Principles)
     - intro.ipynb
 2. [Chapter 2. Machine Learning Fundamentals](https://github.com/5x12/ml4everyone/tree/master/Chapter%202.%20Machine%20Learning%20Fundamentals)
     - algorithms_and_how_they_work.ipynb
