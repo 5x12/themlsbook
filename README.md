@@ -4,6 +4,7 @@ This repository is **a supplement** to the Andrew Wolf's [**Machine Learning For
 
 1. [**Chapter 1. Basic Principles**](https://github.com/5x12/ml4everyone/tree/master/Chapter%201.%20Basic%20Principles)
     - [`intro.ipynb`](www.google.com) : *introduction to Python*
+    - [`cross_validation.ipynb`](www.google.com) : *Cross Validation methods*
 2. [**Chapter 2. Machine Learning Fundamentals**](https://github.com/5x12/ml4everyone/tree/master/Chapter%202.%20Machine%20Learning%20Fundamentals)
     - [`algorithms_and_how_they_work.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%202.%20Machine%20Learning%20Fundamentals/algorithms_and_how_they_work.ipynb) : *cost functions, gradient descent*
     - [`errors.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%202.%20Machine%20Learning%20Fundamentals/errors.ipynb) : *bias and variance graphs, training and test errors graph, learning and validation curves*
