@@ -1,9 +1,9 @@
 # About
 
-This repository is **a supplement** to the Andrew Wolf's [**Machine Learning For Everyone**](ml4everyone.com) book - an A-Z guide to the world of Data Science. This supplement contains the implementation of algorithms, statistical methods and techniques (in Python) that were described in the book. The structure of the repository is identical to the structure of the book:
-
-1. [**Chapter 1. Basic Principles**](https://github.com/5x12/ml4everyone/tree/master/Chapter%201.%20Basic%20Principles)
-    - [`intro.ipynb`](www.google.com) : *introduction to Python*
+This repository is **a supplement** to the Andrew Wolf's [**Machine Learning Simplified**](themlsbook.com) book - an A-Z guide to the world of Data Science. This supplement contains the implementation of algorithms, statistical methods and techniques (in Python) that were described in the book.
+<!-- 
+1. [**Chapter 2. Overview of Supervised Learning**](https://github.com/5x12/themlsbook/tree/master/Chapter%202.%20Overview%20of%20Supervised%20Learning)
+    - [`knn.ipynb`](https://github.com/5x12/themlsbook/blob/master/Chapter%202.%20Overview%20of%20Supervised%20Learning/knn.ipynb) : *introduction to Python*
     - [`cross_validation_methods.ipynb`](www.google.com) : *Hold-out, k-Fold, Leave-One-Out, Leave-p-Out*
 2. [**Chapter 2. Machine Learning Fundamentals**](https://github.com/5x12/ml4everyone/tree/master/Chapter%202.%20Machine%20Learning%20Fundamentals)
     - [`algorithms_and_how_they_work.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%202.%20Machine%20Learning%20Fundamentals/algorithms_and_how_they_work.ipynb) : *cost functions, gradient descent*
@@ -16,7 +16,7 @@ This repository is **a supplement** to the Andrew Wolf's [**Machine Learning For
 4. [**Chapter 4. Feature Selection Techniques**](https://github.com/5x12/ml4everyone/tree/master/Chapter%204.%20Feature%20Selection%20Techniques)
     - [`embedded_methods.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%204.%20Feature%20Selection%20Techniques/embedded_methods.ipynb) : *decision tree classifier, lasso regression*
     - [`filter_methods.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%204.%20Feature%20Selection%20Techniques/filter_methods.ipynb) : *chi-square, fisher score, relief, correlation-based feature selection*
-    - [`wrapper_methods.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%204.%20Feature%20Selection%20Techniques/wrapper_methods.ipynb) : *step forward feature selection, step backward feature selection, recursive feature elimination*
+    - [`wrapper_methods.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%204.%20Feature%20Selection%20Techniques/wrapper_methods.ipynb) : *step forward feature selection, step backward feature selection, recursive feature elimination* -->
 
 
-The book is at www.ml4everyone.com
+www.themlsbook.com
