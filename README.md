@@ -1,6 +1,6 @@
 # About
 
-This repository is **a supplement** to the Andrew Wolf's [**Machine Learning Simplified**](themlsbook.com) book - an A-Z guide to the world of Data Science. This supplement contains the implementation of algorithms, statistical methods and techniques (in Python) that were described in the book.
+This repository is **a supplement** to the Andrew Wolf's [**Machine Learning Simplified**](https://www.themlsbook.com) book - an A-Z guide to the world of Data Science. This supplement contains the implementation of algorithms, statistical methods and techniques (in Python) that were described in the book.
 <!-- 
 1. [**Chapter 2. Overview of Supervised Learning**](https://github.com/5x12/themlsbook/tree/master/Chapter%202.%20Overview%20of%20Supervised%20Learning)
     - [`knn.ipynb`](https://github.com/5x12/themlsbook/blob/master/Chapter%202.%20Overview%20of%20Supervised%20Learning/knn.ipynb) : *introduction to Python*
