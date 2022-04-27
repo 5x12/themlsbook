@@ -1,0 +1,30 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: book/index
+parts:
+- caption: Chapter 2
+  chapters:
+  - file: book/chapter2/knn
+    title: K-Nearest Neighbors (KNN) Classifier
+- caption: Chapter 3
+  chapters:
+  - file: book/chapter3/linear_regression_and_gradient_descent
+    title: Linear Regression and Gradient Descent
+- caption: Chapter 4
+  chapters:
+  - file: book/chapter4/basis_expansion_and_regularization
+    title: Basis Expansion & Regularization
+- caption: Chapter 5
+  chapters:
+  - file: book/chapter5/bias_variance_decomposition
+    title: Bias-variance Decomposition
+  - file: book/chapter5/validation_methods
+    title: Cross-validation Methods
+- caption: Chapter 6
+  chapters:
+  - file: book/chapter6/filter_methods
+    title: Filter Methods
+  - file: book/chapter6/wrapper_methods
+    title: Search Methods

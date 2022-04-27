@@ -1,0 +1,8 @@
+# Python/Jupyter
+.ipynb_checkpoints/
+
+# Jupyter Book
+jupyter_book/_build/
+
+# Mac shit
+.DS_Store
