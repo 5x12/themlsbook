@@ -12,12 +12,12 @@ kernelspec:
 
 (chapter3_part1)=
 
-# Chapter 3: Model Learning
+# Model Learning
 
 - This Jupyter Notebook is a supplement for the [Machine Learning Simplified](https://themlsbook.com) (MLS) book. Note that all detailed explanations are written in the book. This notebook just shed light on Python implementations of the topics discussed.
 - I also assume you know Python syntax and how it works. If you don't, I highly recommend you to take a break and get introduced to the language before going forward with my notebooks. 
 
-> Let's recall Chapter 3. We have a hypothetical dataset (Table 3.1) of six apartments located in the center of Amsterdam along with their prices (in 10,000 EUR) and floor areas (in square meters).
+Let's recall Chapter 3. We have a hypothetical dataset (Table 3.1) of six apartments located in the center of Amsterdam along with their prices (in 10,000 EUR) and floor areas (in square meters).
 
 | area ($m^2$) | price (in €10,000) |
 | ----------- | ----------- |
@@ -28,16 +28,16 @@ kernelspec:
 | 77 | 70 |
 | 95 | 118 |
 
-> The structure of this notebook is similar to the structure of Chapter 3 of [MLS](https://themlsbook.com) book.
+The structure of this notebook is similar to the structure of Chapter 3 of [MLS](https://themlsbook.com) book.
 
-> 1. Problem Representation
-> 2. Learning a Prediction Function
-> 3. How Good is our Prediction Function?
-> 4. Build Regressions with Wrong Parameters
-> 5. Cost Function
-> 6. Gradient Descent
+1. Problem Representation
+2. Learning a Prediction Function
+3. How Good is our Prediction Function?
+4. Build Regressions with Wrong Parameters
+5. Cost Function
+6. Gradient Descent
 
-# 0. Required Libraries & Functions
+## 1. Required Libraries & Functions
 
 
 ```{code-cell} ipython3
@@ -46,12 +46,12 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 ```
 
-# 1. Problem Representation
+## 2. Problem Representation
 
 
-## 1.1. Create Hypothetical Dataset
+### 2.1. Create Hypothetical Dataset
 
-> To create two arrays, X and Y, we use `numpy` (`np`) library. We have already loaded it in the beginning of this notebook.
+To create two arrays, X and Y, we use `numpy` (`np`) library. We have already loaded it in the beginning of this notebook.
 
 
 ```{code-cell} ipython3
@@ -59,9 +59,9 @@ x = np.array([[30], [46], [60], [65], [77], [95]])
 y = np.array([31, 30, 80, 49, 70, 118])
 ```
 
-## 1.2. Visualize the Dataset
+### 2.2. Visualize the Dataset
 
-> Let's now make the same graph that we had in the book (Figure 3.1). We can do so by using `matplotlib` library that we loaded in the beginning of this notebook.
+Let's now make the same graph that we had in the book (Figure 3.1). We can do so by using `matplotlib` library that we loaded in the beginning of this notebook.
 
 
 ```{code-cell} ipython3
@@ -73,13 +73,13 @@ plt.ylim(0, 140) #length of y-axis
 plt.xlim(0, 110) #length of x-axis
 ```
 
-# 2. Learning a Prediction Function
+## 3. Learning a Prediction Function
 
 Let's now build a simple regression with our data and then visualize it with the graph.
 
-## 2.1. Build a Linear Regression
+### 3.1. Build a Linear Regression
 
-> First, we **initialize** our `Linear Regression` algorithm. We use `LinearRegression` from `sklearn` library that we loaded in the beginning.
+First, we **initialize** our `Linear Regression` algorithm. We use `LinearRegression` from `sklearn` library that we loaded in the beginning.
 
 
 ```{code-cell} ipython3
@@ -87,7 +87,7 @@ Let's now build a simple regression with our data and then visualize it with the
 reg = LinearRegression()
 ```
 
-> Second, we pass `x` and `y` to that algorithm for learning.
+Second, we pass `x` and `y` to that algorithm for learning.
 
 
 ```{code-cell} ipython3
@@ -102,7 +102,7 @@ print(' coefficient (parameter a) = {} \n intercept (parameter b) = {}'.format(r
                                                                                reg.intercept_.round(0)))
 ```
 
-## 2.2. Vizualize Linear Regression
+### 3.2. Vizualize Linear Regression
 
 Plotting the regression model:
 
@@ -118,13 +118,13 @@ plt.ylim(0, 140) #length of y-axis
 plt.xlim(0, 110) #length of x-axis
 ```
 
-# 3. How Good is our Prediction Function?
+## 4. How Good is our Prediction Function?
 
-> The next step is to evaluate how good our model is. To do so, let's firt show residuals.
+The next step is to evaluate how good our model is. To do so, let's firt show residuals.
 
-## 3.1. Draw Residuals
+### 4.1. Draw Residuals
 
-> Let's draw residuals - the difference between actual data points and the predicted (by our model) values.
+Let's draw residuals - the difference between actual data points and the predicted (by our model) values.
 
 
 ```{code-cell} ipython3
@@ -138,13 +138,13 @@ for i in range(len(x)):
 plt.legend();
 ```
 
-## 3.2. Calculating Sum of Squared Residuals (SSR)
+### 4.2. Calculating Sum of Squared Residuals (SSR)
 
-> Let's calculate SSR. The formula for calculating SSR is:
+Let's calculate SSR. The formula for calculating SSR is:
   $$SSR = \sum (y_i-\hat{y}_i)^2$$
-  > where
-  > - $y_i$ is a value of an observed target variable $i$
-  > - $\hat{y}_i$ is a value of $y$ predicted by the model with a specific $x_i$ ($\hat{y}_i=ax_i+b$)
+where
+- $y_i$ is a value of an observed target variable $i$
+- $\hat{y}_i$ is a value of $y$ predicted by the model with a specific $x_i$ ($\hat{y}_i=ax_i+b$)
 
 
 
@@ -165,13 +165,13 @@ for i in range(0, len(x)):
 np.sum(r)
 ```
 
-# 4. Build Regressions with Wrong Parameters
+## 5. Build Regressions with Wrong Parameters
 
-> Just like we did in the [MLS](https://themlsbook.com) book, let's now build two regressions with random values for coefficient ($a$) and intercept ($b$), and see how their SSR would differ from the "true" regression $y=1.3x -18$ (estimated in Section 2.1.)
+Just like we did in the [MLS](https://themlsbook.com) book, let's now build two regressions with random values for coefficient ($a$) and intercept ($b$), and see how their SSR would differ from the "true" regression $y=1.3x -18$ (estimated in Section 2.1.)
 
-## 4.1. Regression I
+### 5.1. Regression I
 
-> Let's plot regression $y=-10x+780$ and calculate its SSR.
+Let's plot regression $y=-10x+780$ and calculate its SSR.
 
 
 ```{code-cell} ipython3
@@ -204,12 +204,12 @@ np.sum(r)
 
 > For the Regression 1, $SSR=388,806$. 
 
-> Let's proceed with another regression, Regression 2, and execute the same tasks!
+Let's proceed with another regression, Regression 2, and execute the same tasks!
 
-## 4.2. Regression II
+### 5.2. Regression II
 
 
-> Let's plot regression $y=4*x-190$ and calculate its SSR.
+Let's plot regression $y=4*x-190$ and calculate its SSR.
 
 
 ```{code-cell} ipython3
@@ -240,15 +240,15 @@ np.sum(r)
 
 > For the Regression 2, $SSR=20,326$.
 
-> If you compare Regression 1 and Regression 2, you might notice that, as the line follows the data points, it shrinks the residuals, and lowers the Sum of Squared Residuals.
+If you compare Regression 1 and Regression 2, you might notice that, as the line follows the data points, it shrinks the residuals, and lowers the Sum of Squared Residuals.
 
-# 5. Cost Function
+## 6. Cost Function
 
-> Now is exciting stuff - plotting a Cost Function!
+Now is exciting stuff - plotting a Cost Function!
 
-## 5.1. Try out several values for a coefficient $a$
+### 6.1. Try out several values for a coefficient $a$
 
-> Let’s start with an example where we pretend to know $b=-18$. This leaves us with fˆ(x) = a · x − 18, a function of a single parameter $a$. Let’s evaluate the SSR for some values of the parameter $a$:
+Let’s start with an example where we pretend to know $b=-18$. This leaves us with fˆ(x) = a · x − 18, a function of a single parameter $a$. Let’s evaluate the SSR for some values of the parameter $a$:
 
 
 ```{code-cell} ipython3
@@ -265,10 +265,10 @@ for i in range(len(a1)):
 plt.legend();
 ```
 
-## 5.2. Build Cost Function
+### 6.2. Build Cost Function
 
 
->Now, let’s plot calculated $SSR(a)$ values over a changing parameter $a$ on the graph, where the x-axis is an $a$ value and the y-axis is the value of the SSR, (as shown in Figure 3.6a in the [MLS](https://themlsbook.com) book)
+Now, let’s plot calculated $SSR(a)$ values over a changing parameter $a$ on the graph, where the x-axis is an $a$ value and the y-axis is the value of the SSR, (as shown in Figure 3.6a in the [MLS](https://themlsbook.com) book)
 
 
 ```{code-cell} ipython3
@@ -309,11 +309,11 @@ ax.plot_surface(aa0, aa1, J(aa0,aa1,x,y,m=len(x)))
 ax.view_init(50,-150)
 ```
 
-# 6. Gradient Descent 
+## 7. Gradient Descent 
 
-> Let's see the gradient descent is action.
+Let's see the gradient descent is action.
 
-## 6.1. Original Regression
+### 7.1. Original Regression
 
 
 ```{code-cell} ipython3
@@ -340,7 +340,7 @@ for i in range(0, len(x)):
 np.sum(r)
 ```
 
-## 6.2. Gradient Steps
+### 7.2. Gradient Steps
 
 We know that our cost function $J(a)$ is
 
@@ -356,28 +356,31 @@ $
 
 Let's take the derivative of this function with the respect to parameter $a$:
 
+$
 \begin{equation}
 \begin{split}
     \underbrace{\frac{\partial}{\partial \ a} \ J(a)}_\text{slope} &=\underbrace{\frac{\partial}{\partial \ a}\Big(31-(a*30-18)\Big)^2}_\text{2*30*(31-(a*30-18))*(-1)}+\frac{\partial}{\partial \ a}\Big(30-(a*46-18)\Big)^2+\frac{\partial}{\partial \ a}\Big(80-(a*60-18)\Big)^2+\\
     &+\frac{\partial}{\partial \ a}\Big(49-(a*65-18)\Big)^2+\frac{\partial}{\partial \ a}\Big(70-(a*77-18)\Big)^2+\frac{\partial}{\partial \ a}\Big(118-(a*95-18)\Big)^2
 \end{split}
 \end{equation}
+$
 
 Using a chain rule for each term, we will get this equation: 
 
+$
 \begin{equation}
 \begin{split}
     \frac{\partial}{\partial \ a} \ J(a) &=(-2*30)\Big(31-(a*30-18)\Big)+(-2*46)\Big(30-(a*46-18)\Big)+(-2*60)\Big(80-(a*60-18)\Big)+\\
     &+(-2*65)\Big(49-(a*65-18)\Big)+(-2*77)\Big(70-(a*77-18)\Big)+(-2*95)\Big(118-(a*95-18)\Big)
 \end{split}
 \end{equation}
-
+$
 
 
 
 Now that we have the derivative, gradient descent will use it to find where the Sum of Squared Residuals is the lowest. Our algorithm does not know the true value of $a$ that would minimize $J(a)$ (which is $a=1.3$). Hence, it will start by setting $a=0$. 
 
-### 6.2.0 First, let's derive cost function
+#### 7.2.1 First, let's derive cost function
 
 
 ```{code-cell} ipython3
@@ -393,7 +396,7 @@ f = (31-(a*30-18))**2+(30-(a*46-18))**2+(80-(a*60-18))**2+(49-(a*65-18))**2+(70-
 sym.diff(f)
 ```
 
-### 6.2.1. Step 1 
+#### 7.2.2. Step 1 
 
 First step is to plug $a=0$ into the derivative:
 
@@ -444,7 +447,7 @@ a = a-step_size
 print('At Step 1, a = ', a)
 ```
 
-### 6.2.2. Step 2
+#### 7.2.3. Step 2
 
 Following the same logic, we now use the new coefficient $a$ to calculate new  derivative:
 
@@ -466,7 +469,7 @@ a = a-step_size
 print('At Step 2, a = ', round(a, 5))
 ```
 
-### 6.2.3. Step 3
+#### 7.2.4. Step 3
 
 
 ```{code-cell} ipython3
@@ -486,7 +489,7 @@ a = a-step_size
 print('At Step 3, a = ', round(a, 5))
 ```
 
-### 6.2.4. Step 4
+#### 7.2.5. Step 4
 
 
 ```{code-cell} ipython3
@@ -506,7 +509,7 @@ a = a-step_size
 print('At Step 4, a = ', round(a, 5))
 ```
 
-### 6.2.5. Step 5
+#### 7.2.6. Step 5
 
 
 ```{code-cell} ipython3
@@ -526,7 +529,7 @@ a = a-step_size
 print('At Step 5, a = ', round(a, 5))
 ```
 
-### 6.2.6. Step 6
+#### 7.2.7. Step 6
 
 
 ```{code-cell} ipython3
@@ -546,7 +549,7 @@ a = a-step_size
 print('At Step 6, a = ', round(a, 5))
 ```
 
-### 6.2.7. Step 7
+#### 7.2.8. Step 7
 
 
 ```{code-cell} ipython3
@@ -566,7 +569,7 @@ a = a-step_size
 print('At Step 7, a = ', round(a, 5))
 ```
 
-### 6.2.8. Step 8
+#### 7.2.9. Step 8
 
 
 ```{code-cell} ipython3
@@ -586,7 +589,7 @@ a = a-step_size
 print('At Step 8, a = ', round(a, 5))
 ```
 
-### 6.2.9. Step 9
+#### 7.2.10. Step 9
 
 
 ```{code-cell} ipython3
@@ -606,7 +609,7 @@ a = a-step_size
 print('At Step 9, a = ', round(a, 5))
 ```
 
-### 6.2.10. Step 10
+#### 7.2.11. Step 10
 
 
 ```{code-cell} ipython3
@@ -626,7 +629,7 @@ a = a-step_size
 print('At Step 10, a = ', round(a, 5))
 ```
 
-### 6.2.11. Step 11
+#### 7.2.12. Step 11
 
 
 ```{code-cell} ipython3
@@ -646,7 +649,7 @@ a = a-step_size
 print('At Step 11, a = ', round(a, 5))
 ```
 
-### 6.2.12. Step 12
+#### 7.2.13. Step 12
 
 
 ```{code-cell} ipython3
@@ -666,7 +669,7 @@ a = a-step_size
 print('At Step 12, a = ', round(a, 5))
 ```
 
-### 6.2.13. Step 13
+#### 7.2.14. Step 13
 
 
 ```{code-cell} ipython3
@@ -686,7 +689,7 @@ a = a-step_size
 print('At Step 13, a = ', round(a, 5))
 ```
 
-### 6.2.14. Step 14
+#### 7.2.15. Step 14
 
 
 ```{code-cell} ipython3
@@ -706,7 +709,7 @@ a = a-step_size
 print('At Step 14, a = ', round(a, 5))
 ```
 
-### 6.2.15. Step 15
+#### 7.2.16. Step 15
 
 
 ```{code-cell} ipython3
@@ -726,14 +729,14 @@ a = a-step_size
 print('At Step 15, a = ', round(a, 5))
 ```
 
-## 6.3. Different Initialization
+### 7.3. Different Initialization
 
 
 ```{code-cell} ipython3
 a = 2.23
 ```
 
-### 6.3.1. Step 1
+#### 7.3.1. Step 1
 
 
 ```{code-cell} ipython3
@@ -756,7 +759,7 @@ a = a-step_size
 print('At Step 1, a = ', round(a, 5))
 ```
 
-### 6.3.2. Step 2
+#### 7.3.2. Step 2
 
 
 ```{code-cell} ipython3
@@ -772,7 +775,7 @@ a = a-step_size
 print('At Step 2, a = ', round(a, 5))
 ```
 
-### 6.3.3. Step 3
+#### 7.3.3. Step 3
 
 
 ```{code-cell} ipython3
@@ -788,7 +791,7 @@ a = a-step_size
 print('At Step 3, a = ', round(a, 5))
 ```
 
-### 6.3.4. Step 4
+#### 7.3.4. Step 4
 
 
 ```{code-cell} ipython3
@@ -804,7 +807,7 @@ a = a-step_size
 print('At Step 4, a = ', round(a, 5))
 ```
 
-### 6.3.5. Step 5
+#### 7.3.5. Step 5
 
 
 ```{code-cell} ipython3
@@ -820,7 +823,7 @@ a = a-step_size
 print('At Step 5, a = ', round(a, 5))
 ```
 
-### 6.3.6. Step 6
+#### 7.3.6. Step 6
 
 
 ```{code-cell} ipython3
@@ -836,7 +839,7 @@ a = a-step_size
 print('At Step 6, a = ', round(a, 5))
 ```
 
-### 6.3.7. Step 7
+#### 7.3.7. Step 7
 
 
 ```{code-cell} ipython3
@@ -852,7 +855,7 @@ a = a-step_size
 print('At Step 7, a = ', round(a, 5))
 ```
 
-### 6.3.8. Step 8
+#### 7.3.8. Step 8
 
 
 ```{code-cell} ipython3
@@ -868,7 +871,7 @@ a = a-step_size
 print('At Step 8, a = ', round(a, 5))
 ```
 
-### 6.3.9. Step 9
+#### 7.3.9. Step 9
 
 
 ```{code-cell} ipython3
@@ -884,7 +887,7 @@ a = a-step_size
 print('At Step 9, a = ', round(a, 5))
 ```
 
-### 6.3.10. Step 10
+#### 7.3.10. Step 10
 
 
 ```{code-cell} ipython3
