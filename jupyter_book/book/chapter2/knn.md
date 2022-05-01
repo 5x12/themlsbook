@@ -12,12 +12,12 @@ kernelspec:
 
 (chapter2_part1)=
 
-# Chapter 2: K-Nearest Neighbors (KNN) Classifier
+# K-Nearest Neighbors (KNN) Classifier
 
 - This Jupyter Notebook is a supplement for the [Machine Learning Simplified](https://themlsbook.com) book. Note that all detailed explanations are written in the book. This notebook just shed light on Python implementations of the topics discussed.
 - I also assume you know Python syntax and how it works. If you don't, I highly recommend you to take a break and get introduced to the language before going forward with my notebooks. 
 
-> Let's recall Chapter 2. We have a hypothetical dataset (Table 2.1) containing 20 fruits that are a mix of `apples`, `mandarins`, and `lemons` For each fruit, we have measured it’s `height` and `width` and recorded them as the first two columns of the table. For each fruit we know its `type`, or class label, and this is represented by the last column.
+Let's recall Chapter 2. We have a hypothetical dataset (Table 2.1) containing 20 fruits that are a mix of `apples`, `mandarins`, and `lemons` For each fruit, we have measured it’s `height` and `width` and recorded them as the first two columns of the table. For each fruit we know its `type`, or class label, and this is represented by the last column.
 
 | height | width | fruit |
 | ----------- | ----------- | ----------- |
@@ -42,14 +42,14 @@ kernelspec:
 | 8.10 | 6.15 | Lemon |
 | 8.69 | 5.82 | Lemon |
 
-> The structure of this notebook is identical to the structure of Chapter 2.1: ML Pipeline: Example.
+The structure of this notebook is identical to the structure of Chapter 2.1: ML Pipeline: Example.
 
-> 1. Problem Representation
-> 2. Learning a Prediction Function
-> 3. How Good is our Prediction Function?
-> 4. Model Complexity
+1. Problem Representation
+2. Learning a Prediction Function
+3. How Good is our Prediction Function?
+4. Model Complexity
 
-# 0. Required Libraries & Functions
+## 1. Required Libraries & Functions
 
 
 ```{code-cell} ipython3
@@ -140,11 +140,11 @@ def plotKNN(
     plt.ylabel("width")  
 ```
 
-# 1. Probelm Representation
+## 2. Probelm Representation
 
-## 1.1. Create Hypothetical Dataset
+### 2.1. Create Hypothetical Dataset
 
-> To create a table, we use `pandas` library - a library that manages **PAN**el **DA**ta **S**ets. We have already loaded it in the beginning of this notebook.
+To create a table, we use `pandas` library - a library that manages **PAN**el **DA**ta **S**ets. We have already loaded it in the beginning of this notebook.
 
 
 ```{code-cell} ipython3
@@ -162,20 +162,20 @@ df
 
 ```
 
-## 1.2. Visualize the Dataset
+### 2.2. Visualize the Dataset
 
-> Let's now make the same graph that we had in the book. We can do so by simply calling the funtion `plotFruitFigure()` that we defined in the beginning.
+Let's now make the same graph that we had in the book. We can do so by simply calling the funtion `plotFruitFigure()` that we defined in the beginning.
 
 
 ```{code-cell} ipython3
 plotFruitFigure()
 ```
 
-# 2. Learning a Prediction Function
+## 3. Learning a Prediction Function
 
-## 2.1. Build a KNN Classifier
+### 3.1. Build a KNN Classifier
 
-> Let's build a classifier and use it to predict some values. Firstly, we define `X` and `y`:
+Let's build a classifier and use it to predict some values. Firstly, we define `X` and `y`:
 
 
 ```{code-cell} ipython3
@@ -185,7 +185,7 @@ X = df[['height', 'width']].values
 y = df.fruit.values
 ```
 
-> Second, we **initialize** our `KNN` algorithm. We use `KNeighborsClassifier` from `sklearn` library that we loaded in the beginning.
+Second, we **initialize** our `KNN` algorithm. We use `KNeighborsClassifier` from `sklearn` library that we loaded in the beginning.
 
 
 ```{code-cell} ipython3
@@ -193,7 +193,7 @@ y = df.fruit.values
 clf = KNeighborsClassifier(n_neighbors = 1)
 ```
 
-> Finally, we pass the dataset (X and y) to that algorithm for learning.
+Finally, we pass the dataset (X and y) to that algorithm for learning.
 
 
 ```{code-cell} ipython3
@@ -201,9 +201,9 @@ clf = KNeighborsClassifier(n_neighbors = 1)
 clf.fit(X, y)
 ```
 
-## 2.2. Vizualize KNN Decision Regions
+### 3.2. Vizualize KNN Decision Regions
 
-> Let's visualize the decision boundaries of KNN in a graph, like we did in the book. For that, we will use `plotKNN` function that we defined in the beginning.
+Let's visualize the decision boundaries of KNN in a graph, like we did in the book. For that, we will use `plotKNN` function that we defined in the beginning.
 
 
 ```{code-cell} ipython3
@@ -213,16 +213,16 @@ plotKNN(n_neighbors=1,
         plot_labels=df.fruit.values)
 ```
 
-> We can remove the datapoints - after the learning is done, we don't need them anymore. Hence, we can set a parameter `plot_data=False` to see our trained model.
+We can remove the datapoints - after the learning is done, we don't need them anymore. Hence, we can set a parameter `plot_data=False` to see our trained model.
 
 
 ```{code-cell} ipython3
 plotKNN(n_neighbors=1, plot_data=False)
 ```
 
-## 2.3. Predict unknown values
+### 3.3. Predict unknown values
 
-> Let's predict unknown fruits using our trained classifier. Let's try to predict the label for an unknown fruit with width of 9cm and height of 3cm
+Let's predict unknown fruits using our trained classifier. Let's try to predict the label for an unknown fruit with width of 9cm and height of 3cm
 
 
 ```{code-cell} ipython3
@@ -230,7 +230,7 @@ plotKNN(n_neighbors=1, plot_data=False)
 clf.predict([[9, 3]])
 ```
 
-> We can predict values for a whole bunch of them!
+We can predict values for a whole bunch of them!
 
 
 ```{code-cell} ipython3
@@ -238,14 +238,14 @@ clf.predict([[9, 3]])
 clf.predict([[9, 3], [4, 5], [2, 5], [8, 9], [5, 7]])
 ```
 
-# 3. How Good is our Prediction Function?
+## 4. How Good is our Prediction Function?
 
-> The next step is to evaluate how good our model is.
+The next step is to evaluate how good our model is.
 
-## 3.1. Evaluate on Train Set
+### 4.1. Evaluate on Train Set
 
-> Let's first evaluate the score of the model on the training dataset. Remember, as we explained in the MLS book, this should be 0 in this example. 
-> The first step is to "predict" the training set, that is, we pretend that we don't know its labels and see if the trained model manages to guess them correctly.
+Let's first evaluate the score of the model on the training dataset. Remember, as we explained in the MLS book, this should be 0 in this example. 
+The first step is to "predict" the training set, that is, we pretend that we don't know its labels and see if the trained model manages to guess them correctly.
 
 
 ```{code-cell} ipython3
@@ -256,7 +256,7 @@ y_pred_train = clf.predict(X)
 y_pred_train
 ```
 
-> Let's recall the actual labels for our fruits:
+Let's recall the actual labels for our fruits:
 
 
 ```{code-cell} ipython3
@@ -264,7 +264,7 @@ y_pred_train
 y
 ```
 
-> Let's now calculate the difference between actual and predicted labels:
+Let's now calculate the difference between actual and predicted labels:
 
 
 ```{code-cell} ipython3
@@ -275,7 +275,7 @@ train_score = metrics.accuracy_score(y, y_pred_train)
 train_score
 ```
 
-> 1.0 means the model correctly predicted all (100%) data points from the training set. We can calculate the misclassification error rate simply as:
+1.0 means the model correctly predicted all (100%) data points from the training set. We can calculate the misclassification error rate simply as:
 
 
 ```{code-cell} ipython3
@@ -285,9 +285,9 @@ train_error = 1-train_score
 train_error
 ```
 
-## 3.2. Evaluate on Test Set
+### 4.2. Evaluate on Test Set
 
-> Imagine we have new fuits with the following properties:
+Imagine we have new fuits with the following properties:
 
 | height | width | fruit |
 | ----------- | ----------- | ----------- |
@@ -297,7 +297,7 @@ train_error
 | 7.51 | 5.01 | Lemon |
 | 8.34 | 4.23 | Lemon |
 
-> Let's see if our model would correctly predict the fruit label from this dataset (test set). Again, we do so by showing fruits' measurements and not revealing their labels.
+Let's see if our model would correctly predict the fruit label from this dataset (test set). Again, we do so by showing fruits' measurements and not revealing their labels.
 
 
 ```{code-cell} ipython3
@@ -317,7 +317,7 @@ plotKNN(n_neighbors=1,
         plot_labels=test_data.fruit)
 ```
 
-> Just by eyeballing this graph, we can already see that the model made few prediction errors - some data points do not land at decision regions of the same color (this was explained in the book). Let's verify it:
+Just by eyeballing this graph, we can already see that the model made few prediction errors - some data points do not land at decision regions of the same color (this was explained in the book). Let's verify it:
 
 
 ```{code-cell} ipython3
@@ -342,15 +342,15 @@ for i in range(len(test_data)):
         print(f'[WRONG!] - actual observation is {test_data.fruit[i]}, but the model predicted {pred}')
 ```
 
-> The model incorrectly predicted 3 observations out of 5. As we discussed in the MLS book, when the error is low on the training set (0%), but much higher on an unseen test set (3/5=60%), the model is overfitted. Another problem is underfitting - when test and train errors are equally high. To get a balance between these two, we tune hyperparameters of the model to pick the right model complexity (not too simple, not too complicated).
+The model incorrectly predicted 3 observations out of 5. As we discussed in the MLS book, when the error is low on the training set (0%), but much higher on an unseen test set (3/5=60%), the model is overfitted. Another problem is underfitting - when test and train errors are equally high. To get a balance between these two, we tune hyperparameters of the model to pick the right model complexity (not too simple, not too complicated).
 
-# 4. Model Complexity
+## 5. Model Complexity
 
-## 4.1. View Different Scenarios
+### 5.1. View Different Scenarios
 
-> Let's try different values of k (k=1, k=2, k-5, k=20) and visually see what happens.
+Let's try different values of k (k=1, k=2, k-5, k=20) and visually see what happens.
 
-## 4.1.1. K = 1
+#### 5.1.1. K = 1
 
 
 ```{code-cell} ipython3
@@ -360,7 +360,7 @@ plotKNN(n_neighbors=1, #selecting k=1
         plot_labels=df.fruit.values)
 ```
 
-> Let's check predictions of test data once again:
+Let's check predictions of test data once again:
 
 
 ```{code-cell} ipython3
@@ -370,9 +370,9 @@ plotKNN(n_neighbors=1,
         plot_labels=test_data.fruit)
 ```
 
-> Misclassifications on test set: 3 (3 data points do not have the same color as their decision region)
+Misclassifications on test set: 3 (3 data points do not have the same color as their decision region)
 
-## 4.1.2. K = 2
+#### 5.1.2. K = 2
 
 
 ```{code-cell} ipython3
@@ -382,7 +382,7 @@ plotKNN(n_neighbors=2, #selecting k=2
         plot_labels=df.fruit.values)
 ```
 
-> Let's check predictions of test data when $k=2$:
+Let's check predictions of test data when $k=2$:
 
 
 ```{code-cell} ipython3
@@ -392,9 +392,9 @@ plotKNN(n_neighbors=2,
         plot_labels=test_data.fruit)
 ```
 
-> Misclassifications on test set: 2 (2 data points (both mandarins) do not have the same color as their decision region)
+Misclassifications on test set: 2 (2 data points (both mandarins) do not have the same color as their decision region)
 
-## 4.1.3. K = 5
+#### 5.1.3. K = 5
 
 
 ```{code-cell} ipython3
@@ -404,7 +404,7 @@ plotKNN(n_neighbors=5, #selecting k=5
         plot_labels=df.fruit.values)
 ```
 
-> Let's check predictions of test data when $k=5$:
+Let's check predictions of test data when $k=5$:
 
 
 ```{code-cell} ipython3
@@ -414,9 +414,9 @@ plotKNN(n_neighbors=5,
         plot_labels=test_data.fruit)
 ```
 
-> Misclassifications on test set: 0 (all data points have the same color as their decision region)
+Misclassifications on test set: 0 (all data points have the same color as their decision region)
 
-## 4.1.4. K = N
+#### 5.1.4. K = N
 
 
 ```{code-cell} ipython3
@@ -428,7 +428,7 @@ plotKNN(n_neighbors=n, #selecting k=n=20
         plot_labels=df.fruit.values)
 ```
 
-> Let's check predictions of test data when $k=n=20$:
+Let's check predictions of test data when $k=n=20$:
 
 
 ```{code-cell} ipython3
@@ -438,11 +438,11 @@ plotKNN(n_neighbors=n,
         plot_labels=test_data.fruit)
 ```
 
-> Misclassifications on test set: 4 (only one dataapoint (apple) has the same color as its decision region)
+Misclassifications on test set: 4 (only one dataapoint (apple) has the same color as its decision region)
 
-## 4.2. Tune Hyperparameters
+### 5.2. Tune Hyperparameters
 
-> Now, for each `k` let's calculate train_error and test_error.
+Now, for each `k` let's calculate train_error and test_error.
 
 
 ```{code-cell} ipython3
@@ -486,9 +486,9 @@ for i in range(len(X)):
     
 ```
 
-## 4.3. Plot Misclassification Error Rates 
+### 5.3. Plot Misclassification Error Rates 
 
-> Now, let's plot a graph that shows misclassification error rate for training and test sets as we vary $k$, the number of neighbors in our KNN model.
+Now, let's plot a graph that shows misclassification error rate for training and test sets as we vary $k$, the number of neighbors in our KNN model.
 
 
 
@@ -512,4 +512,4 @@ plt.legend()
 plt.show()
 ```
 
-> Models on the left side of the plot (near $k=n=20$) use too large a neighborhood and produce an underfit model. Models on the right side of the plot (near $k=1$) use too small a neighborhood and produce an overfit model. Models between $k=3$ and $k=7$ perform optimally on the test set -- in other words, they optimally balance overfitting and underfitting.
+Models on the left side of the plot (near $k=n=20$) use too large a neighborhood and produce an underfit model. Models on the right side of the plot (near $k=1$) use too small a neighborhood and produce an overfit model. Models between $k=3$ and $k=7$ perform optimally on the test set -- in other words, they optimally balance overfitting and underfitting.
