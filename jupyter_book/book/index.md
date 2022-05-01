@@ -18,5 +18,7 @@ This repository is **a supplement** to the Andrew Wolf's [**Machine Learning Sim
     - [`filter_methods.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%204.%20Feature%20Selection%20Techniques/filter_methods.ipynb) : *chi-square, fisher score, relief, correlation-based feature selection*
     - [`wrapper_methods.ipynb`](https://github.com/5x12/ml4everyone/blob/master/Chapter%204.%20Feature%20Selection%20Techniques/wrapper_methods.ipynb) : *step forward feature selection, step backward feature selection, recursive feature elimination* -->
 
+```{tableofcontents}
+```
 
 www.themlsbook.com
