@@ -12,7 +12,7 @@ kernelspec:
 
 (chapter2_part1)=
 
-# K-Nearest Neighbors (KNN) Classifier
+# K-Nearest Neighbors Classifier
 
 - This Jupyter Notebook is a supplement for the [Machine Learning Simplified](https://themlsbook.com) book. Note that all detailed explanations are written in the book. This notebook just shed light on Python implementations of the topics discussed.
 - I also assume you know Python syntax and how it works. If you don't, I highly recommend you to take a break and get introduced to the language before going forward with my notebooks. 
