@@ -4,25 +4,25 @@
 format: jb-book
 root: book/index
 parts:
-- caption: Chapter 2
+- caption: CHAPTER 2 - Overview of Supervised Learning
   chapters:
   - file: book/chapter2/knn
     title: K-Nearest Neighbors (KNN) Classifier
-- caption: Chapter 3
+- caption: CHAPTER 3 - Model Learning
   chapters:
   - file: book/chapter3/linear_regression_and_gradient_descent
     title: Linear Regression and Gradient Descent
-- caption: Chapter 4
+- caption: CHAPTER 4 - Basis Expansion and Regularization
   chapters:
   - file: book/chapter4/basis_expansion_and_regularization
     title: Basis Expansion & Regularization
-- caption: Chapter 5
+- caption: CHAPTER 5 - Model Selection
   chapters:
   - file: book/chapter5/bias_variance_decomposition
     title: Bias-variance Decomposition
   - file: book/chapter5/validation_methods
     title: Cross-validation Methods
-- caption: Chapter 6
+- caption: CHAPTER 6 - Feature Selection
   chapters:
   - file: book/chapter6/filter_methods
     title: Filter Methods
