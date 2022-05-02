@@ -12,12 +12,12 @@ kernelspec:
 
 (chapter5_part1)=
 
-# Chapter 5: Model Selection | Bias-variance Decomposition
+# Bias-variance Decomposition
 
 - This Jupyter Notebook is a supplement for the [Machine Learning Simplified](https://themlsbook.com) (MLS) book. Note that all detailed explanations are written in the book. This notebook just shed light on Python implementations of the topics discussed.
 - I also assume you know Python syntax and how it works. If you don't, I highly recommend you to take a break and get introduced to the language before going forward with my notebooks. 
 
-# 0. Required Libraries & Functions
+## 1. Required Libraries & Functions
 
 
 ```{code-cell} ipython3
@@ -28,9 +28,9 @@ import warnings
 %matplotlib inline
 ```
 
-# 1. Synthetic Data
+## 2. Synthetic Data
 
-## 1.1. Define Synthetic Data and Target
+### 2.1. Define Synthetic Data and Target
 Our synthetic problem defines:
 - $f$ is the true function.  $f$ is usually not known, but for our synthetic example it is known and set to:
     $$
@@ -66,7 +66,7 @@ def sample_xy():
     return x, y
 ```
 
-### Plot two datasets
+### 2.2. Plot two datasets
 - We draw a random sample of two datasets of size $N$
 - Plot them in different colors
 - todo: show the true function $f$ along with it?  Say "in the synthetic example, we know the true $f$, which is the function we are trying to recover by learning from data"
@@ -95,7 +95,7 @@ x2, y2 = sample_xy()
 plot_two_datasets(x1,y1, x2,y2)
 ```
 
-### Fit polynomials of different degrees to two datasets
+### 2.3. Fit polynomials of different degrees to two datasets
 Note how the fit of the higher-order polynomial differs more (visually) from each other than the lower-order polynomial does.
 
 This will visually help us understand the variance -- how much the randomness in the dataset affects the learned function $\hat{f}$.  (More detailed calculation of variance to follow)
@@ -129,10 +129,10 @@ for degree in degrees_to_display:
     fit_and_plot_two_datasets(x1,y1, x2,y2, degree)
 ```
 
-# 2. Variance Computation
+## 3. Variance Computation
 
 
-## $E[\hat{f}]$ computation
+<!-- ### 3.1. $E[\hat{f}]$ computation
 
 We then approximate the expected value of the fit as the average of the fit over $M$ random dataset:
 $$
@@ -141,10 +141,10 @@ $$
 where $\hat{f}_{\mathcal{D}_i}$ is the fit to the $ith$ random dataset.
 
 The plots below show the fits of $100$ random models and their average values,
-$E_{\mathcal{D}}[\hat{f}(x)]$, for polynomials of each degree.
+$E_{\mathcal{D}}[\hat{f}(x)]$, for polynomials of each degree. -->
 
 
-## Variance computation
+<!-- ### 3.2. Variance computation -->
 
 We now compute the variance of the fits around the mean ......  todo
 
@@ -191,7 +191,7 @@ for degree in degrees_to_display:
     plot_fits_Efhat(degree);
 ```
 
-# 3. Bias Comptuation
+## 4. Bias Comptuation
 
 The below plots show the expected fit $E_{\mathcal{D}}[\hat{f}]$ against the true function $f$.
 
@@ -228,7 +228,7 @@ for degree in degrees_to_display:
     plot_f_and_E_fhat(degree)
 ```
 
-# 4. Total EPE
+## 5. Total EPE
 
 We now compute the total expeected prediction error (EPE) for each degree polynomial.
 
@@ -246,7 +246,7 @@ display(df_EPE)
 df_EPE.plot(linestyle = '--', marker='o', figsize = (10, 6));
 ```
 
-# 4. Empirical Test Error
+## 6. Empirical Test Error
 
 Previously we computed the theoretical EPE.
 The key question is:
@@ -321,7 +321,7 @@ test_errors.index.name = 'polynomial degree'
 pd.concat([df_EPE['EPE'], test_errors], axis=1)
 ```
 
-# 5. Conclusion
+## 7. Conclusion
 
 In this notebook you learned how to:
 - Comptue the theoretical expected prediction error (EPE) using the bias-variance decomposition:
