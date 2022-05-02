@@ -12,14 +12,14 @@ kernelspec:
 
 (chapter6_part1)=
 
-# Chapter 6: Feature Selection | Filter Methods
+# Filter Methods
 
 - This Jupyter Notebook is a supplement for the [Machine Learning Simplified](https://themlsbook.com) (MLS) book. Note that all detailed explanations are written in the book. This notebook just shed light on Python implementations of the topics discussed.
 - I also assume you know Python syntax and how it works. If you don't, I highly recommend you to take a break and get introduced to the language before going forward with my notebooks. 
 
 This notebook is a supplement for *Chapter 3. Dimensionality Reduction Techniques* of **Machine Learning For Everyone** book.
 
-# 1. Dataset
+## 1. Required Libraries, Data & Variables
 
 Let's import the data and have a look at it:
 
@@ -72,7 +72,7 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1)
 ```
 
-# 2. Filter methods
+## 2. Filter methods
 
 The following Filter methods are examined:
 
@@ -81,7 +81,7 @@ The following Filter methods are examined:
    3. **RelieF** method
    4. **Correlation-based** Feature Selection method
 
-## 2.1. Chi-square
+### 2.1. Chi-square
 
 
 ```{code-cell} ipython3
@@ -127,7 +127,7 @@ for feature_name, feature_score in zip(X.columns,chi[1]):
         print(feature_name, '\t', feature_score)
 ```
 
-## 2.2. Fisher Score
+### 2.2. Fisher Score
 
 
 ```{code-cell} ipython3
@@ -154,7 +154,7 @@ f_values.sort_values(ascending = True, inplace = True) # sort series by fisher s
 f_values
 ```
 
-## 2.3. RelieF
+### 2.3. RelieF
 
 
 ```{code-cell} ipython3
@@ -196,7 +196,7 @@ for feature_name, feature_score in zip(X.columns,fs.feature_scores):
 relief_features
 ```
 
-## 2.4. Correlation-based Feature Selection
+### 2.4. Correlation-based Feature Selection
 
 
 ```{code-cell} ipython3
@@ -209,7 +209,7 @@ relevant_features = cor_target[:-1][cor_target>0.8]
 relevant_features
 ```
 
-# 3. Comparing Four Methods
+## 3. Comparing Four Methods
 
 
 ```{code-cell} ipython3

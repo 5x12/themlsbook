@@ -12,12 +12,12 @@ kernelspec:
 
 (chapter6_part2)=
 
-# Chapter 6: Feature Selection | Search Methods
+# Search Methods
 
 - This Jupyter Notebook is a supplement for the [Machine Learning Simplified](https://themlsbook.com) (MLS) book. Note that all detailed explanations are written in the book. This notebook just shed light on Python implementations of the topics discussed.
 - I also assume you know Python syntax and how it works. If you don't, I highly recommend you to take a break and get introduced to the language before going forward with my notebooks. 
 
-# 1. Dataset
+## 1. Required Libraries, Data & Variables
 
 Let's import the data and have a look at it:
 
@@ -70,7 +70,7 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1)
 ```
 
-# 2. Wrapper methods
+## 2. Wrapper methods
 
 The following Search methods are examined:
 
@@ -78,7 +78,7 @@ The following Search methods are examined:
    2. **Step Backward** Feature Selection method
    3. **Recursive Feature** Elimination method
 
-## 2.1. Step Forward Feature Selection
+### 2.1. Step Forward Feature Selection
 
 
 ```{code-cell} ipython3
@@ -118,7 +118,7 @@ top_forward = X.columns[list(sfs.k_feature_idx_)]
 top_forward
 ```
 
-## 2.2. Step Backward Feature Selection
+### 2.2. Step Backward Feature Selection
 
 
 ```{code-cell} ipython3
@@ -153,7 +153,7 @@ top_backward = X.columns[list(sfs.k_feature_idx_)]
 top_backward
 ```
 
-## 2.3. Recursive Feature Elimination Method
+### 2.3. Recursive Feature Elimination Method
 
 
 ```{code-cell} ipython3
@@ -189,7 +189,7 @@ print (top_recursive)
 print(dict(zip(X.columns, rfe.ranking_)))
 ```
 
-# 3. Comparing Four Methods
+## 3. Comparing Four Methods
 
 
 ```{code-cell} ipython3
