@@ -12,12 +12,12 @@ kernelspec:
 
 (chapter4_part1)=
 
-# Chapter 4: Basis Expansion & Regularization
+# Basis Expansion
 
 - This Jupyter Notebook is a supplement for the [Machine Learning Simplified](https://themlsbook.com) (MLS) book. Note that all detailed explanations are written in the book. This notebook just shed light on Python implementations of the topics discussed.
 - I also assume you know Python syntax and how it works. If you don't, I highly recommend you to take a break and get introduced to the language before going forward with my notebooks. 
 
-# 1. Data & Basic Libraries
+## 1. Required Libraries & Data
 
 Let's import basic libraries and the data that we use in the book.
 
@@ -45,9 +45,9 @@ plt.title('The data')
 plt.legend(loc='best')
 ```
 
-# 2. Building Three Polynomial Models
+## 2. Building Three Polynomial Models
 
-## 2.1. First-degree polynomial
+### 2.1. First-degree polynomial
 
 
 ```{code-cell} ipython3
@@ -66,7 +66,7 @@ plt.ylim((0,130))
 plt.show()
 ```
 
-## 2.1. Second-degree polynomial
+### 2.2. Second-degree polynomial
 
 
 ```{code-cell} ipython3
@@ -121,7 +121,7 @@ def f(x):
     return np.array([(31.9 - 0.5 * i + 0.014 * i**2) for i in x])
 ```
 
-### 2.1.1 Calculate SSR_training and SSR_test
+#### 2.2.1 Calculate SSR_training and SSR_test
 
 
 ```{code-cell} ipython3
@@ -145,7 +145,7 @@ SSR_test = sum((predict_test-y_test)**2)
 print('SSR_train = {} \n \n SSR_test = {}'.format(SSR_train, SSR_test))
 ```
 
-## 2.2. Fourth-degree polynomial
+### 2.3. Fourth-degree polynomial
 
 
 ```{code-cell} ipython3
@@ -230,7 +230,7 @@ SSR_test = sum((predict_test-y_test)**2)
 print('SSR_train = {} \n \n SSR_test = {}'.format(SSR_train, SSR_test))
 ```
 
-## 2.3. Fifth-degree polynomial
+### 2.4. Fifth-degree polynomial
 
 
 ```{code-cell} ipython3
@@ -320,7 +320,7 @@ SSR_test = sum((predict_test-y_test)**2)
 print('SSR_train = {} \n \n SSR_test = {}'.format(SSR_train, SSR_test))
 ```
 
-# 3. Regularization
+## 3. Regularization
 
 
 ```{code-cell} ipython3
@@ -335,7 +335,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.linear_model import Ridge
 ```
 
-## 3.1. Ridge Regression
+### 3.1. Ridge Regression
 
 
 ```{code-cell} ipython3
@@ -381,7 +381,7 @@ plt.xlim((0,120))
 plt.show()
 ```
 
-## 3.2. Lasso Regression
+### 3.2. Lasso Regression
 
 
 ```{code-cell} ipython3
