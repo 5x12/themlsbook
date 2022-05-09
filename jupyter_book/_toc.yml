@@ -1,0 +1,32 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: book/index
+parts:
+- caption: CHAPTER 2 - Overview of Supervised Learning
+  chapters:
+  - file: book/chapter2/knn
+    title: K-Nearest Neighbors (KNN) Classifier
+- caption: CHAPTER 3 - Model Learning
+  chapters:
+  - file: book/chapter3/linear_regression_and_gradient_descent
+    title: Linear Regression and Gradient Descent
+- caption: CHAPTER 4 - Basis Expansion and Regularization
+  chapters:
+  - file: book/chapter4/basis_expansion
+    title: Basis Expansion
+  - file: book/chapter4/regularization
+    title: Regularization
+- caption: CHAPTER 5 - Model Selection
+  chapters:
+  - file: book/chapter5/bias_variance_decomposition
+    title: Bias-variance Decomposition
+  - file: book/chapter5/validation_methods
+    title: Cross-validation Methods
+- caption: CHAPTER 6 - Feature Selection
+  chapters:
+  - file: book/chapter6/filter_methods
+    title: Filter Methods
+  - file: book/chapter6/wrapper_methods
+    title: Search Methods
