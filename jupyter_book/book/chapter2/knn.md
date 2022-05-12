@@ -63,7 +63,7 @@ from sklearn.neighbors import KNeighborsClassifier
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 import seaborn as sns
-%config InlineBackend.figure_format = 'retina'. # sharper plots
+%config InlineBackend.figure_format = 'retina' # sharper plots
 
 
 # Create a function to plot scatter graph
