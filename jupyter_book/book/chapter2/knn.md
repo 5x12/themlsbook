@@ -14,8 +14,9 @@ kernelspec:
 
 # K-Nearest Neighbors Classifier
 
-- This Jupyter Notebook is a supplement for the [Machine Learning Simplified](https://themlsbook.com) book. Note that all detailed explanations are written in the book. This notebook just shed light on Python implementations of the topics discussed.
-- I also assume you know Python syntax and how it works. If you don't, I highly recommend you to take a break and get introduced to the language before going forward with my notebooks. 
+- This is a supplement material for the [Machine Learning Simplified](https://themlsbook.com) book. It sheds light on Python implementations of the topics discussed while all detailed explanations can be found in the book. 
+- I also assume you know Python syntax and how it works. If you don't, I highly recommend you to take a break and get introduced to the language before going forward with my code. 
+- This material can be downloaded as a Jupyter notebook (Download button in the upper-right corner -> `.ipynb`) to reproduce the code and play around with it. 
 
 Let's recall Chapter 2. We have a hypothetical dataset (Table 2.1) containing 20 fruits that are a mix of `apples`, `mandarins`, and `lemons` For each fruit, we have measured it’s `height` and `width` and recorded them as the first two columns of the table. For each fruit we know its `type`, or class label, and this is represented by the last column.
 
@@ -54,13 +55,16 @@ The structure of this notebook is identical to the structure of Chapter 2.1: ML 
 
 ```{code-cell} ipython3
 # Libraries
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
 import pandas as pd
 import numpy as np
-import seaborn as sns
 from sklearn import metrics
 from sklearn.neighbors import KNeighborsClassifier
+
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+import seaborn as sns
+%config InlineBackend.figure_format = 'retina' # sharper plots
+
 
 # Create a function to plot scatter graph
 def plotFruitFigure():
