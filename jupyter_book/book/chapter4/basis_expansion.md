@@ -26,7 +26,9 @@ Let's import basic libraries and the data that we use in the book.
 
 ```{code-cell} ipython3
 import numpy as np
+
 import matplotlib.pyplot as plt
+%config InlineBackend.figure_format = 'retina' # sharper plots
 
 # Defined data
 X_train = [30, 46, 60, 65, 77, 95]

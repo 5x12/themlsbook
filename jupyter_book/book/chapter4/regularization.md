@@ -33,7 +33,9 @@ from sklearn.pipeline import make_pipeline
 
 from sklearn.linear_model import Ridge
 import numpy as np
+
 import matplotlib.pyplot as plt
+%config InlineBackend.figure_format = 'retina' # sharper plots
 ```
 
 ## 2. Ridge Regression

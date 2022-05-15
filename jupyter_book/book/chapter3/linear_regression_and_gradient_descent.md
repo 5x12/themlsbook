@@ -43,8 +43,10 @@ The structure of this notebook is similar to the structure of Chapter 3 of [MLS]
 
 ```{code-cell} ipython3
 import numpy as np
-import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
+
+import matplotlib.pyplot as plt
+%config InlineBackend.figure_format = 'retina' # sharper plots
 ```
 
 ## 2. Problem Representation
