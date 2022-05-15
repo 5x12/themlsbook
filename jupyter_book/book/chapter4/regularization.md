@@ -19,7 +19,7 @@ kernelspec:
 - This material can be downloaded as a Jupyter notebook (Download button in the upper-right corner -> `.ipynb`) to reproduce the code and play around with it. 
 
 
-## 1. Required Libraries
+## 1. Required Libraries & Data
 
 
 ```{code-cell} ipython3
@@ -36,6 +36,13 @@ import numpy as np
 
 import matplotlib.pyplot as plt
 %config InlineBackend.figure_format = 'retina' # sharper plots
+
+# Defined data
+X_train = [30, 46, 60, 65, 77, 95]
+y_train = [31, 30, 80, 49, 70, 118]
+
+X_test = [17, 40, 55, 57, 70, 85]
+y_test = [19, 50, 60, 32, 90, 110]
 ```
 
 ## 2. Ridge Regression
