@@ -18,40 +18,11 @@ kernelspec:
 - I also assume you know Python syntax and how it works. If you don't, I highly recommend you to take a break and get introduced to the language before going forward with my code. 
 - This material can be downloaded as a Jupyter notebook (Download button in the upper-right corner -> `.ipynb`) to reproduce the code and play around with it. 
 
-Let's recall Chapter 2. We have a hypothetical dataset (Table 2.1) containing 20 fruits that are a mix of `apples`, `mandarins`, and `lemons` For each fruit, we have measured it’s `height` and `width` and recorded them as the first two columns of the table. For each fruit we know its `type`, or class label, and this is represented by the last column.
 
-| height | width | fruit |
-| ----------- | ----------- | ----------- |
-| 3.91 | 5.76 | Mandarin |
-| 7.09 | 7.69 | Apple |
-| 10.48 | 7.32 | Lemon |
-| 9.21 | 7.20 | Lemon |
-| 7.95 | 5.90 | Lemon |
-| 7.62 | 7.51 | Apple |
-| 7.95 | 7.51 | Apple |
-| 8.42 | 5.32 | Mandarin |
-| 4.69 | 6.19 | Mandarin |
-| 7.50 | 5.99 | Lemon |
-| 7.11 | 7.02 | Apple |
-| 4.15 | 5.60 | Mandarin |
-| 7.29 | 8.38 | Apple |
-| 8.49 | 6.52 | Lemon |
-| 7.44 | 7.89 | Apple |
-| 7.86 | 7.60 | Apple |
-| 3.93 | 6.12 | Apple |
-| 4.40 | 5.90 | Mandarin |
-| 8.10 | 6.15 | Lemon |
-| 8.69 | 5.82 | Lemon |
-
-The structure of this notebook is identical to the structure of Chapter 2.1: ML Pipeline: Example.
-
-1. Problem Representation
-2. Learning a Prediction Function
-3. How Good is our Prediction Function?
-4. Model Complexity
 
 ## 1. Required Libraries & Functions
 
+Before we start, we need to import few libraries and functions that we will use in this jupyterbook. You don't need to understand what those functions do for now.
 
 ```{code-cell} ipython3
 # Libraries
@@ -146,29 +117,55 @@ def plotKNN(
 
 ## 2. Probelm Representation
 
+Let's recall Chapter 2 of [the Machine Learning Simplified book](https://themlsbook.com). We have a hypothetical dataset (Table 2.1 in the MLS book) containing 20 fruits that are a mix of `apples`, `mandarins`, and `lemons` For each fruit, we have measured it’s `height` and `width` and recorded them as the first two columns of the table. For each fruit we know its `type`, or class label, and this is represented by the last column.
+
+| height | width | fruit |
+| ----------- | ----------- | ----------- |
+| 3.91 | 5.76 | Mandarin |
+| 7.09 | 7.69 | Apple |
+| 10.48 | 7.32 | Lemon |
+| 9.21 | 7.20 | Lemon |
+| 7.95 | 5.90 | Lemon |
+| 7.62 | 7.51 | Apple |
+| 7.95 | 7.51 | Apple |
+| 8.42 | 5.32 | Mandarin |
+| 4.69 | 6.19 | Mandarin |
+| 7.50 | 5.99 | Lemon |
+| 7.11 | 7.02 | Apple |
+| 4.15 | 5.60 | Mandarin |
+| 7.29 | 8.38 | Apple |
+| 8.49 | 6.52 | Lemon |
+| 7.44 | 7.89 | Apple |
+| 7.86 | 7.60 | Apple |
+| 3.93 | 6.12 | Apple |
+| 4.40 | 5.90 | Mandarin |
+| 8.10 | 6.15 | Lemon |
+| 8.69 | 5.82 | Lemon |
+
 ### 2.1. Create Hypothetical Dataset
 
-To create a table, we use `pandas` library - a library that manages **PAN**el **DA**ta **S**ets. We have already loaded it in the beginning of this notebook.
+Let's re-create aforementioned table in python. We use `pandas` library - a library that manages **PAN**el **DA**ta **S**ets - to do so. Note that we have already imported it in the beginning of this notebook.
 
 
 ```{code-cell} ipython3
-# Create a hypothetical dataset from the MLS book
+#re-create a hypothetical dataset
 data = {'height': [3.91, 7.09, 10.48, 9.21, 7.95, 7.62, 7.95, 4.69, 7.50, 7.11, 4.15, 7.29, 8.49, 7.44, 7.86, 3.93, 4.40, 5.5, 8.10, 8.69], 
         'width': [5.76, 7.69, 7.32, 7.20, 5.90, 7.51, 5.32, 6.19, 5.99, 7.02, 5.60, 8.38, 6.52, 7.89, 7.60, 6.12, 5.90, 4.5, 6.15, 5.82],
         'fruit': ['Mandarin', 'Apple', 'Lemon', 'Lemon', 'Lemon', 'Apple', 'Mandarin', 'Mandarin', 'Lemon', 'Apple', 'Mandarin', 'Apple', 'Lemon', 'Apple', 'Apple', 'Apple', 'Mandarin', 'Lemon', 'Lemon', 'Lemon']
        }  
 
-# Create DataFrame df using pandas library
+#transform dataset into a DataFrame df using pandas library
 df = pd.DataFrame(data)  
   
-# Print the output
+#print the output
 df
 
 ```
 
+
 ### 2.2. Visualize the Dataset
 
-Let's now make the same graph that we had in the book. We can do so by simply calling the funtion `plotFruitFigure()` that we defined in the beginning.
+Let's now build a plot to visualize the dataset. We will plot the same graph that we had in the Machine Learning Simplified book. To make things easier, we can do so by simply calling the funtion `plotFruitFigure()` that we defined in the beginning.
 
 
 ```{code-cell} ipython3
@@ -207,7 +204,7 @@ clf.fit(X, y)
 
 ### 3.2. Vizualize KNN Decision Regions
 
-Let's visualize the decision boundaries of KNN in a graph, like we did in the book. For that, we will use `plotKNN` function that we defined in the beginning.
+Now that the model is ready, let's visualize the decision boundaries of KNN on a graph, like we did in the MLS book. To simplify things, we will simply use `plotKNN` function that we defined in the beginning.
 
 
 ```{code-cell} ipython3
@@ -224,9 +221,11 @@ We can remove the datapoints - after the learning is done, we don't need them an
 plotKNN(n_neighbors=1, plot_data=False)
 ```
 
+Figure above shows the learned decision regions of a model, or specifically, it shows how this classifier predicts the (unknown) type of a new fruit with height and width measurements. For instance, if there is an unknown data point with measurements (4cm,5cm), it lands in the green region so the classifier predicts mandarin.
+
 ### 3.3. Predict unknown values
 
-Let's predict unknown fruits using our trained classifier. Let's try to predict the label for an unknown fruit with width of 9cm and height of 3cm
+Let's predict unknown fruits using our trained classifier. Let's try to predict the label for an unknown fruit with width of 9cm and height of 3cm:
 
 
 ```{code-cell} ipython3
@@ -249,7 +248,8 @@ The next step is to evaluate how good our model is.
 ### 4.1. Evaluate on Train Set
 
 Let's first evaluate the score of the model on the training dataset. Remember, as we explained in the MLS book, this should be 0 in this example. 
-The first step is to "predict" the training set, that is, we pretend that we don't know its labels and see if the trained model manages to guess them correctly.
+
+The first step is to "predict" the training set, as if we pretend that we don't know training set's labels and see if the trained model manages to guess them correctly.
 
 
 ```{code-cell} ipython3
