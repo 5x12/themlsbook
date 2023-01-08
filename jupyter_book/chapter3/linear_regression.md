@@ -136,7 +136,7 @@ ax.plot(x,y, 'o', color='g', label='training data')
 ax.plot(x, -18.0  + 1.3*x, label=f'h(x) = {reg.intercept_.round(0)} + {reg.coef_[0].round(2)} x') 
 
 for i in range(len(x)):
-    ax.plot([x[i], x[i]], [-18.0  + 1.3*x[i],y[i]], '-', color='c')
+    ax.plot(x[i], x[i], -18.0 + 1.3*x[i], y[i], '-', color='c')
 plt.legend();
 ```
 The blue vertical lines represent the residuals - the difference between the actual data points and the predicted (by our model) values. So, in order to find the SSR, we need to find residuals first.
